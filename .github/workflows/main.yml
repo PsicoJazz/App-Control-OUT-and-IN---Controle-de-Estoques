@@ -1,0 +1,24 @@
+name: teste html
+
+on: 
+  push:
+    branches: ["main"]
+
+jobs: 
+  verificar-h1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: baixar o codigo
+      - uses: actions/checkout@v4
+
+      - name: Vericar se existe <h1>
+        run: 
+          if grep -Eiq "<h1[^>]*> index.html; then
+            echo "Encontramos a tag <h1>!"
+          else
+            echo "Não encontramos a tag <h1>!"
+            exit 1
+          fi
+            
+            
